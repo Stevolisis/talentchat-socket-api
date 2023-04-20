@@ -102,7 +102,16 @@ function App() {
 
   return (
     <>
-      <h1>Hello</h1>
+      <div><p>Talent Video</p></div>
+      <div>
+        <div>
+          {stream&&<video playsInline autoPlay muted ref={myVideo} className='w-[30vw]'/>}
+          {callAccepted&& !callEnded ? 
+          <video playsInline autoPlay muted ref={myVideo} className='w-[30vw]'/> 
+          : null
+          }
+        </div>
+      </div>
     </>
   )
 }
