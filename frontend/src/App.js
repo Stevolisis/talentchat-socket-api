@@ -129,7 +129,7 @@ function App() {
             }
           </div>
 
-            <ParticipantStream/>
+            {/* <ParticipantStream myVid={myVideo} stream={stream}/> */}
 
             <Controls/>
 

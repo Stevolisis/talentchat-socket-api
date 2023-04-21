@@ -4,7 +4,11 @@ export default function Controls(){
 
     return(
         <>
-            <p>Controls</p>
+            <div>
+                <div>
+                    <button></button>
+                </div>
+            </div>
         </>
     )
 }
