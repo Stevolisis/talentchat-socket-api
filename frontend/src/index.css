@@ -13,43 +13,43 @@
     @font-face {
       font-family: AmazingKids;
       font-weight: 400;
-      src: url(/fonts/Amazing-Kids.ttf);
+      src: url(./fonts/Amazing-Kids.ttf);
     }
   
     @font-face {
       font-family: PoppinsExtraBold;
       font-weight: 400;
-      src: url(/fonts/Poppins-ExtraBold.ttf);
+      src: url(./fonts/Poppins-ExtraBold.ttf);
     }
 
     @font-face {
         font-family: PoppinsBold;
         font-weight: 400;
-        src: url(/fonts/Poppins-Bold.ttf);
+        src: url(./fonts/Poppins-Bold.ttf);
     }
 
     @font-face {
         font-family: PoppinsSemiBold;
         font-weight: 400;
-        src: url(/fonts/Poppins-SemiBold.ttf);
+        src: url(./fonts/Poppins-SemiBold.ttf);
     }
 
     @font-face {
         font-family: PoppinsMedium;
         font-weight: 400;
-        src: url(/fonts/Poppins-Medium.ttf);
+        src: url(./fonts/Poppins-Medium.ttf);
     }
 
     @font-face {
         font-family: PoppinsRegular;
         font-weight: 400;
-        src: url(/fonts/Poppins-Regular.ttf);
+        src: url(./fonts/Poppins-Regular.ttf);
     } 
 
     @font-face {
         font-family: PoppinsLight;
         font-weight: 400;
-        src: url(/fonts/Poppins-Light.ttf);
+        src: url(./fonts/Poppins-Light.ttf);
     }
 
 }
