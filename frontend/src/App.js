@@ -113,25 +113,31 @@ function App() {
     <div>
       <Header/>
 
+
       <section className='flex bg-bgSecondary justify-between h-[86vh]'>
         <Participants/>
 
         <div className='flex-1'>
+
+
           <div>
+            {stream && 
+            <video controls playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/>}
+              {callAccepted&& !callEnded ? 
+              <video playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/> 
+              : null
+            }
+          </div>
+
             <ParticipantStream/>
-          </div>
 
-          <div>
-            <video/>
-          </div>
-
-          <div>
             <Controls/>
-          </div>
+
         </div>
 
         <Chats/>
       </section>
+      
       
       <Footer/>
     </div>
