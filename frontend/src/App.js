@@ -3,6 +3,12 @@ import Peer from 'simple-peer';
 import io from 'socket.io-client';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './index.css';
+import Header from './components/Header';
+import Participants from './components/Participants';
+import Chats from './components/Chats';
+import Footer from './components/Footer';
+import ParticipantStream from './components/ParticipantStream';
+import Controls from './components/Controls';
 
 const socket=io.connect(process.env.SOCKET_HOST);
 
@@ -16,7 +22,6 @@ function App() {
   const [idToCall,setIdToCall]=useState('');
   const [callEnded,setCallEnded]=useState(false);
   const [name,setName]=useState('');
-
   const myVideo=useRef();
   const userVideo=useRef();
   const connectionRef=useRef();
@@ -36,7 +41,7 @@ function App() {
       setRecievingCall(true);
       setCaller(data.from);
       setName(data.name);
-      setCallerSignal(data,signal)
+      setCallerSignal(data.signal)
     })
   },[]);
 
@@ -105,37 +110,69 @@ function App() {
 
   return (
     <>
-      <div><p>Talent Video</p></div>
-      <div>
-        <div>
-          {stream&&<video playsInline autoPlay muted ref={myVideo} className='w-[30vw]'/>}
-          {callAccepted&& !callEnded ? 
-          <video playsInline autoPlay muted ref={myVideo} className='w-[30vw]'/> 
-          : null
-          }
-        </div>
-        <div>
-          <input type='text' placeholder='Name' onChange={(e)=>setName(e.target.value)}/>
-          <CopyToClipboard text={me}>
-            <button>Copy Id</button>
-          </CopyToClipboard>
-          <input type='text' placeholder='Id to call' onChange={(e)=>setIdToCall(e.target.value)}/>
+    <div>
+      <Header/>
+      <section>
+        <Participants/>
 
-        </div>
         <div>
-          {callAccepted&& !callEnded ? 
-          <button onClick={leaveCall}>End Call</button>
-          : 
-          <button onClick={()=>callUser(idToCall)}>Call</button>
-          }
+          <div>
+            <video/>
+          </div>
+          <div>
+            <ParticipantStream/>
+            <Controls/>
+          </div>
         </div>
-        <div>
-          <p>{idToCall}</p>
-        </div>
-      </div>
+
+        <Chats/>
+      </section>
+      <Footer/>
+    </div>
     </>
   )
 }
 
 
 export default App
+
+
+
+
+// <header className='bg-black'><p>Talent Video</p></header>
+// <div>
+//   <div>
+//     {stream&&<video playsInline autoPlay muted ref={myVideo} className='w-[30vw]'/>}
+//     {callAccepted&& !callEnded ? 
+//     <video playsInline autoPlay muted ref={myVideo} className='w-[30vw]'/> 
+//     : null
+//     }
+//   </div>
+//   <div>
+//     <input type='text' placeholder='Name' onChange={(e)=>setName(e.target.value)}/>
+//     <CopyToClipboard text={me}>
+//       <button>Copy Id</button>
+//     </CopyToClipboard>
+//     <input type='text' placeholder='Id to call' onChange={(e)=>setIdToCall(e.target.value)}/>
+
+//   </div>
+//   <div>
+//     {callAccepted&& !callEnded ? 
+//     <button onClick={leaveCall}>End Call</button>
+//     : 
+//     <button onClick={()=>callUser(idToCall)}>Call</button>
+//     }
+//   </div>
+//   <div>
+//     <p>{idToCall}</p>
+//   </div>
+
+//   <div>
+//     {recievingCall&&callAccepted  ? 
+//       <div>
+//         <h1> {name} is calling</h1>
+//         <button onClick={answerCall}>Answer</button>
+//       </div>
+//     : null}
+//   </div>
+// </div>
