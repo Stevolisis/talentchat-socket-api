@@ -8,23 +8,44 @@ export default function Chats(){
                 <div className="bg-brTertiary text-sm flex items-center justify-between py-3 px-5 text-txtTertiary">
                     <p>Chat Room</p> 
                     <AiFillWechat className='text-[26px]'/>
-
                 </div>
-                <div className="text-right w-full px-3 text-xs pt-4 text-txtSecondary overflow-y-auto"> 
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Hi Whatsup?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
 
+                <div className="px-3 flex flex-col text-xs text-txtSecondary overflow-y-auto"> 
+                    <div className='flex justify-end'>
+                        <p className="p-3 w-fit text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3">Hi Whatsup?</p>
+                    </div>
+
+                    <div className='flex justify-start'>
                     <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    <p className="p-3 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
+                    </div>
+
+                    <div className='flex justify-end'>
+                        <p className="p-3 w-fit text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3">Omo i dey oo, wetin dey sup?</p>
+                    </div>
+
+                    <div className='flex justify-start'>
+                        <p className="p-3 w-fit text-right bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Na Sallah today oo?</p>
+                    </div>
+
+                    <div className='flex justify-end'>
+                        <p className="p-3 w-fit text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3">Normal, wetin you cook?</p>
+                    </div>
+
+                    <div className='flex justify-start'>
+                        <p className="p-3 w-fit text-right bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fried Rice and Shawarma, you?</p>
+                    </div>
+
+                    <div className='flex justify-end'>
+                        <p className="p-3 w-fit text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3">Bad Guy, me i no ccok, i will go to Restaurant and chill there, i'm inviting you</p>
+                    </div>
+
+                    <div className='flex justify-start'>
+                        <p className="p-3 w-fit text-right bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Thanks, i dey come</p>
+                    </div>
                 </div>
-                <div className="w-full text-txtSecondary text-center text-xs my-3">
-                    <input className="bg-brPrimary py-2 px-3 outline-none border-none rounded-md text-bgTertiary" type='text' placeholder="Send a message"/>
+
+                <div className="w-full text-txtSecondary text-center text-xs my-3 px-3">
+                    <input className="bg-brPrimary w-full py-2 px-3 outline-none border-none rounded-md text-bgTertiary" type='text' placeholder="Send a message"/>
                 </div>
             </nav>
         </>
