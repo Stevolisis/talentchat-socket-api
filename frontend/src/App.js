@@ -113,7 +113,7 @@ function App() {
     <div>
       <Header/>
 
-      <section className='flex bg-bgSecondary justify-between h-[100vh]'>
+      <section className='flex bg-bgSecondary justify-between h-[86vh]'>
         <Participants/>
 
         <div className='flex-1'>

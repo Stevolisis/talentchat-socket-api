@@ -7,7 +7,7 @@ export default function Participants(){
             <nav className="w-[20vw] font-[PoppinsRegular] overflow-y-auto border-r border-bgTertiary">
                 <div className="bg-brTertiary text-sm flex items-center justify-between py-3 px-5 text-txtTertiary">
                     <p>Participants</p> 
-                    <p className="py-2 px-3 bg-brSecondary rounded-md">7</p>
+                    <p className="py-2 px-3 bg-brSecondary rounded-md text-xs">7</p>
                 </div>
 
                 <div className="px-5 text-xs text-[PoppinsLight] text-txtSecondary">
