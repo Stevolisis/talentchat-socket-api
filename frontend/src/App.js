@@ -112,21 +112,27 @@ function App() {
     <>
     <div>
       <Header/>
-      <section>
+
+      <section className='flex bg-bgSecondary justify-between h-[100vh]'>
         <Participants/>
 
-        <div>
+        <div className='flex-1'>
+          <div>
+            <ParticipantStream/>
+          </div>
+
           <div>
             <video/>
           </div>
+
           <div>
-            <ParticipantStream/>
             <Controls/>
           </div>
         </div>
 
         <Chats/>
       </section>
+      
       <Footer/>
     </div>
     </>
