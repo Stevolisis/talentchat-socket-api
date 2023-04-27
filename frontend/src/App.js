@@ -1,6 +1,6 @@
 import React,{  useEffect, useState, useRef } from 'react';
 import Peer from 'simple-peer';
-import io from 'socket.io-client';
+import {io} from 'socket.io-client';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './index.css';
 import Header from './components/Header';
@@ -9,8 +9,9 @@ import Chats from './components/Chats';
 import Footer from './components/Footer';
 import ParticipantStream from './components/ParticipantStream';
 import Controls from './components/Controls';
+import JoinRoom from './components/JoinRoom';
 
-const socket=io.connect(process.env.SOCKET_HOST);
+const socket=io.connect(process.env.REACT_APP_SOCKET_HOST);
 
 function App() {
   const [me,setMe]=useState('');
@@ -22,6 +23,8 @@ function App() {
   const [idToCall,setIdToCall]=useState('');
   const [callEnded,setCallEnded]=useState(false);
   const [name,setName]=useState('');
+  const [usersStatus,setUsersStatus]=useState(false);
+  const [chatStatus,setChatStatus]=useState(false);
   const myVideo=useRef();
   const userVideo=useRef();
   const connectionRef=useRef();
@@ -110,8 +113,9 @@ function App() {
 
   return (
     <>
+    {/* <JoinRoom/> */}
     <div>
-      <Header/>
+      <Header usersStatus={usersStatus} setUsersStatus={setUsersStatus} chatStatus={chatStatus} setChatStatus={setChatStatus}/>
 
 
       <section className='flex bg-bgSecondary justify-between h-[86vh]'>
@@ -122,20 +126,21 @@ function App() {
 
           <div>
             {stream && 
-            <video controls playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/>}
+            <video playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/>}
               {callAccepted&& !callEnded ? 
               <video playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/> 
               : null
             }
           </div>
 
-            {/* <ParticipantStream myVid={myVideo} stream={stream}/> */}
 
-            <Controls/>
+            {stream && <Controls/> }
+
+            <ParticipantStream usersStatus={usersStatus} chatStatus={chatStatus}/>
 
         </div>
 
-        <Chats/>
+        <Chats usersStatus={usersStatus} chatStatus={chatStatus}/>
       </section>
       
       

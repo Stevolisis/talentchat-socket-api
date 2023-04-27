@@ -4,26 +4,22 @@ export default function ParticipantStream({myVid,stream}){
 
     return(
         <>
-            <div className="p-3">
-                <div className="flex items-center justify-start">
-                    <div className="w-20 h-20 rounded-full">
-                        <video className='w-20 h-20 min-w-20 min-h-20 rounded-full' controls playsInline autoPlay muted className='w-full h-[32vw]'/>
-                        <source src="./videos/movie.mp4" type="video/mp4"/>
+            <div className="p-3 mt-[50px]">
+                <div className="flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full mx-1">
+                        <img src="/parts.jpg" alt='participants' className="cursor-pointer border-2 border-brSecondary w-12 h-12 rounded-full"/>
                     </div>
 
-                    <div className="w-20 h-20 rounded-full">
-                        <video className='w-20 h-20 min-w-20 min-h-20 rounded-full' controls playsInline autoPlay muted className='w-full h-[32vw]'/>
-                        <source src="./videos/movie.mp4" type="video/mp4"/>
+                    <div className="w-12 h-12 rounded-full mx-1">
+                        <img src="/parts.jpg" alt='participants' className="cursor-pointer border-2 border-brSecondary w-12 h-12 rounded-full"/>
                     </div>
 
-                    <div className="w-20 h-20 rounded-full">
-                        <video className='w-20 h-20 min-w-20 min-h-20 rounded-full' controls playsInline autoPlay muted className='w-full h-[32vw]'/>
-                        <source src="videos/movie.mp4" type="video/mp4"/>
+                    <div className="w-12 h-12 rounded-full mx-1">
+                        <img src="/parts.jpg" alt='participants' className="cursor-pointer border-2 border-brSecondary w-12 h-12 rounded-full"/>
                     </div>
 
-                    <div className="w-20 h-20 rounded-full">
-                        <video className='w-20 h-20 min-w-20 min-h-20 rounded-full' controls playsInline autoPlay muted className='w-full h-[32vw]'/>
-                        <source src="./videos/movie.mp4" type="video/mp4"/>
+                    <div className="w-12 h-12 rounded-full mx-1">
+                        <img src="/parts.jpg" alt='participants' className="cursor-pointer border-2 border-brSecondary w-12 h-12 rounded-full"/>
                     </div>
                 </div>
             </div>
