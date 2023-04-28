@@ -1,4 +1,4 @@
-import React,{  useEffect, useState, useRef } from 'react';
+import React,{  useEffect, useState } from 'react';
 import { Peer } from "peerjs";
 import { io } from 'socket.io-client';
 import './index.css';
@@ -15,7 +15,10 @@ export default function App() {
     socket.on('me',(id)=>{
       setId(id);
     });
-    socket.emit('join-room',params.roomId,12)
+    socket.emit('join-room',params.roomId,params.userId);
+    socket.on('user-connected',userId=>{
+      console.log('User connected',userId)
+    })
   },[]);
 
 
