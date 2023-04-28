@@ -1,11 +1,14 @@
 import React,{  useEffect, useState, useRef } from 'react';
-import Peer from 'simple-peer';
+import { Peer } from "peerjs";
 import { io } from 'socket.io-client';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './index.css';
 
+const socket=io.connect(import.meta.env.VITE_SOCKET_HOST);
 
 function App() {
+  const peer = new Peer("pick-an-id");
+  console.log(import.meta.env.VITE_SOCKET_HOST);
 
   return (
     <>
