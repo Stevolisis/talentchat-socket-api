@@ -18,23 +18,25 @@ export default function App() {
   console.log('peer',peer)
 
   useEffect(()=>{
-    navigator.mediaDevices.getUserMedia({video:true, audio:false})
-    .then((stream)=>{
-      myVideo.current.srcObject=stream;
-      myVideo.current.play();
+    const getUserMedia = async () => {
+      const mediaConstraints = {
+        video: true,
+        audio: true,
+      };
 
-      
-    socket.on('user-connected',(userId)=>{
-      const call=peer.call(userId,stream);
-      console.log('User connected',userId)
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia(
+          mediaConstraints,
+        );
+        console.log(stream)
 
-    });
+        myVideo.current.srcObject = stream;
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-    });
-
-    peer.on('open',(id)=>{
-      socket.emit('join-room',params.roomId,params.userId);
-    });
+    getUserMedia();
 
   },[]);
 
