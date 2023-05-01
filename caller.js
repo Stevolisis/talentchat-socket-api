@@ -12,9 +12,9 @@ const io=require('socket.io')(server,{
 server.listen(5000,()=>{console.log('Server running at PORT 5000')});
 
 
-
 io.on("connection",(socket)=>{
     socket.on("join-room",(roomId,userId)=>{
+        console.log('me',userId);
         socket.join(roomId);
         socket.to(roomId).emit('user-connected',userId);
     });
