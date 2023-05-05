@@ -7,17 +7,17 @@ import queryString from 'query-string';
 const socket=io.connect(import.meta.env.VITE_SOCKET_HOST);
 
 export default function App() {
-  const [recieverId, setRecieverId]=useState(123);
+  const [recieverId, setRecieverId]=useState('');
   const [me,setMe]=useState('');
   const [myStream,setMyStream]=useState('');
-  // const [recieverStream,setRecieverStream]=useState('');
   const myVideo=useRef();
   const recieverVideo=useRef();
   const params = queryString.parse(location.search);
-  const peer = new Peer();
+  const peer = new Peer(params.userId);
 
 
   useEffect(()=>{
+    
     navigator.mediaDevices.getUserMedia({video:true, audio:false})
     .then((stream)=>{
       myVideo.current.srcObject=stream;
@@ -27,11 +27,11 @@ export default function App() {
       
     socket.on('user-connected',(userId)=>{
       
-      const call=peer.call(userId,stream);
+      // const call=peer.call(userId,stream);
 
-      call.on('stream',(recieverStream)=>{
-        recieverVideo.current.srcObject=recieverStream;
-      });
+      // call.on('stream',(recieverStream)=>{
+      //   recieverVideo.current.srcObject=recieverStream;
+      // });
       
       call.on('close',()=>{ 
         recieverVideo.current=null;
@@ -41,20 +41,24 @@ export default function App() {
 
       peer.on('call',(call)=>{
         call.answer(stream);
-        call.on('stream',(myStream)=>{
-          myVideo.current.srcObject=myStream;
-          myVideo.current.play();
+        call.on('stream',(rexieverStream)=>{
+          recieverVideo.current.srcObject=rexieverStream;
+          recieverVideo.current.play();
         });
       })
+
     });
 
     peer.on('open',id=>{
       console.log('me',id);
-      setMe(id)
-      socket.emit('join-room',params.roomId,id);
+      setMe(params.userId)
+      socket.emit('join-room',params.roomId,params.userId);
     });
 
   },[]);
+
+
+
 
   const callUser=()=>{
     const call=peer.call(recieverId,myStream);
@@ -63,15 +67,7 @@ export default function App() {
       recieverVideo.current.srcObject=recieverStream;
       recieverVideo.current.play();
     });
-
     
-    peer.on('call',(call)=>{
-      call.answer(myStream);
-      call.on('stream',(myStream)=>{
-        myVideo.current.srcObject=myStream;
-        myVideo.current.play();
-      });
-    });
   }
 
 
@@ -85,7 +81,7 @@ export default function App() {
           <h1 className='font-semibold text-blue-500'>My Screen: {me}</h1>
           <video className='w-40 h-40 rounded' ref={myVideo}/>
           <div>
-            <input onChange={(e)=>setRecieverId(e.target.value)} type='text' placeholder='userToCall' className='bg-gray-100 outline-none border border-blue-600 p-3'/>
+            <input onChange={(e)=>setRecieverId(e.target.value)} value={recieverId} type='text' placeholder='userToCall' className='bg-gray-100 outline-none border border-blue-600 p-3'/>
             <button onClick={()=>callUser()} className='py-3 px-8  border-blue-600 border-l-0 border text-blue-800 bg-slate-300'>Call</button>
           </div>
         </div>
