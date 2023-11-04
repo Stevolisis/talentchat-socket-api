@@ -14,6 +14,7 @@ server.listen(80,()=>{console.log('Server running at PORT 80')})
 
 
 io.on("connection",(socket)=>{
+    console.log('socket',socket);
     socket.emit("me",socket.id);
 
     socket.on("disconnect",()=>{
@@ -29,8 +30,8 @@ io.on("connection",(socket)=>{
     });
 
     socket.on('answerCall',(data)=>{
-        io.to(data.to).emit('callAccepted'),data.signal
-    })
+        io.to(data.to).emit('callAccepted'),data.signal}
+    );
 
 })
 

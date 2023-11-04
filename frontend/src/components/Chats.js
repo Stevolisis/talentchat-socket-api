@@ -1,7 +1,6 @@
 import { AiFillWechat } from 'react-icons/ai';
 
 export default function Chats({chatStatus}){
-    console.log('rrv',chatStatus)
 
     return(
         <>

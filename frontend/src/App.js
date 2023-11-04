@@ -17,6 +17,7 @@ function App() {
   const [me,setMe]=useState('');
   const [stream,setStream]=useState('');
   const [recievingCall,setRecievingCall]=useState(false);
+  const [calling,setCalling]=useState(false);
   const [caller,setCaller]=useState('');
   const [callerSignal,setCallerSignal]=useState('');
   const [callAccepted,setCallAccepted]=useState(false);
@@ -25,7 +26,7 @@ function App() {
   const [name,setName]=useState('');
   const [usersStatus,setUsersStatus]=useState(false);
   const [chatStatus,setChatStatus]=useState(false);
-  const myVideo=useRef();
+  const myVideo=useRef({srcObject:''});
   const userVideo=useRef();
   const connectionRef=useRef();
 
@@ -34,9 +35,12 @@ function App() {
     .then((stream)=>{
       setStream(stream);
       myVideo.current.srcObject=stream;
+    }).catch(err=>{
+      console.log('errrorrr',err);
     });
 
     socket.on('me',(id)=>{
+      console.log('iiiddd',id);
       setMe(id);
     })
 
@@ -47,11 +51,14 @@ function App() {
       setCallerSignal(data.signal)
     })
   },[]);
+  console.log(me)
 
 
 
 
   const callUser=(id)=>{
+    console.log('callUsercallUser',id);
+    setCalling(true)
     const peer=new Peer({
       initiator:true,
       trickle:false,
@@ -96,6 +103,7 @@ function App() {
     });
 
     peer.on('stream',(stream)=>{
+      console.log('strrrrrreeam',stream);
       userVideo.current.srcObject=stream;
     });
 
@@ -126,15 +134,19 @@ function App() {
 
           <div>
             {stream && 
-            <video playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/>}
-              {callAccepted&& !callEnded ? 
-              <video playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/> 
+              <video playsInline autoPlay muted ref={myVideo} className='w-full h-[32vw]'/>
+            }
+
+            {callAccepted&& !callEnded ? 
+              <video playsInline autoPlay muted ref={userVideo} className='w-full h-[32vw]'/> 
               : null
             }
+            <p className='text-center text-white'>{calling&&'calling...'}</p>
+            <p className='text-center text-blue-400'>{recievingCall && 'recievingCall ...'}</p>
           </div>
 
 
-            {stream && <Controls/> }
+            {stream && <Controls callUser={callUser} recievingCall={recievingCall} setRecievingCall={setRecievingCall} answerCall={answerCall}/> }
 
             <ParticipantStream usersStatus={usersStatus} chatStatus={chatStatus}/>
 
