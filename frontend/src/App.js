@@ -27,12 +27,13 @@ function App() {
   const [usersStatus,setUsersStatus]=useState(false);
   const [chatStatus,setChatStatus]=useState(false);
   const myVideo=useRef({srcObject:''});
-  const userVideo=useRef();
+  const userVideo=useRef({srcObject:''});
   const connectionRef=useRef();
 
   useEffect(()=>{
     navigator.mediaDevices.getUserMedia({video:true, audio:true})
     .then((stream)=>{
+      console.log('begnnnstrreeeaam',stream);
       setStream(stream);
       myVideo.current.srcObject=stream;
     }).catch(err=>{
@@ -108,6 +109,7 @@ function App() {
     });
 
     peer.signal(callerSignal);
+    console.log('QSeZ7UkHf9BX4jP8AAEb',connectionRef.current)
     connectionRef.current=peer;
   }
 

@@ -9,7 +9,7 @@ export default function Controls({callUser,recievingCall,setRecievingCall,answer
                 <div className='flex justify-center'>
                     <button className='w-12 h-12 mx-2 rounded-full flex justify-center items-center text-txtPrimary hover:bg-brSecondary duration-300 bg-brTertiary'><IoMdVideocam/></button>
                     <button className='w-12 h-12 mx-2 rounded-full flex justify-center items-center text-txtPrimary hover:bg-brSecondary duration-300 bg-brTertiary'><FaMicrophone/></button>
-                    <button onClick={()=>callUser('pgNwI_poHDgLotgOAAC9')} className='w-12 h-12 mx-2 rounded-full flex justify-center items-center text-txtPrimary hover:bg-red-400 duration-300 bg-red-600'>
+                    <button onClick={()=>callUser('hoSolcL-EJbe6Q-eAAAH')} className='w-12 h-12 mx-2 rounded-full flex justify-center items-center text-txtPrimary hover:bg-red-400 duration-300 bg-red-600'>
                         <IoMdCall/>
                     </button>      
                     {   recievingCall && 
