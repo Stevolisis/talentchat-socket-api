@@ -12,5 +12,5 @@ const io=require('socket.io')(server,{
 server.listen(80,()=>{console.log('Server running at PORT 80')})
 
 io.on("connection",(socket)=>{
-    console.log(socket);
+    socket.emit("me",socket.id);
 });
