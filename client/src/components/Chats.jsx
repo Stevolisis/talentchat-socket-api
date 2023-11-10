@@ -19,14 +19,6 @@ export default function Chats({chatStatus}){
                     <p className="p-1.5 md:p-2 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
                     </div>
 
-                    <div className='flex justify-end'>
-                        <p className="p-1.5 md:p-2 w-fit text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3">Omo i dey oo, wetin dey sup?</p>
-                    </div>
-
-                    <div className='flex justify-start'>
-                        <p className="p-1.5 md:p-2 w-fit text-right bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Na Sallah today oo?</p>
-                    </div>
-
                 </div>
 
                 <div className="w-full text-txtSecondary text-center text-xs my-3 px-3">

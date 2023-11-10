@@ -5,12 +5,16 @@ import JoinRoom from "../components/JoinRoom";
 import Chats from "../components/Chats";
 import {io} from 'socket.io-client';
 
-const socket=io.connect(import.meta.env.VITE_SOCKET_HOST);
+let socket=io.connect(import.meta.env.VITE_SOCKET_HOST);
 
 export default function Index(){
+    socket.on("connect", () => {
+        console.log('ggg',socket.id);
+        localStorage.setItem('token',socket.id);
+    });
     socket.on('me',(arg)=>{
         console.log(arg)
-    })
+    });
     
     return(
         <>
