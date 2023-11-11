@@ -1,7 +1,14 @@
 import { AiFillWechat } from 'react-icons/ai';
 
-export default function Chats({chats,id,sendMessage,message,setMessage}){
+export default function Chats({socket,chats,id,message,setMessage}){
+    const sendMessage = (e)=>{
+        e.preventDefault();
+        console.log('message',message||'ppppp');
+        socket.emit('group-chat',message);
+        setMessage('');
+    }
 
+    
     return(
         <>
             <nav className={`duration-300 font-[PoppinsRegular] relative flex flex-1 flex-col justify-between border-l border-bgTertiary`}>
@@ -15,11 +22,11 @@ export default function Chats({chats,id,sendMessage,message,setMessage}){
                         chats.current.map((chat,i)=>{
                             return chat.id !== id ?
                                 <div className='flex justify-end' key={i}>
-                                    <p className="p-1.5 md:p-2 w-fit text-sm text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.username}, {chat.time}</span><br/>{chat.text}</p>
+                                    <p className="p-1.5 md:p-2 w-fit text-sm text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.userName}, {chat.time}</span><br/>{chat.text}</p>
                                 </div>
                                 :
                                 <div className='flex justify-start' key={i}>
-                                    <p className="p-1.5 md:p-2 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.username}, {chat.time}</span><br/>{chat.text}</p>
+                                    <p className="p-1.5 md:p-2 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.userName}, {chat.time}</span><br/>{chat.text}</p>
                                 </div>
                         })
                     }

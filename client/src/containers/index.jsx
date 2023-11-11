@@ -24,20 +24,15 @@ export default function Index(){
         setId(arg);
     });
 
-    const sendMessage = (e)=>{
-        e.preventDefault();
-        console.log('message',message||'ppppp');
-        socket.emit('group-chat',message);
-        setMessage('');
-    }
-
     useEffect(()=>{
         socket.on('message',(msg)=>{
             console.log(msg)
             setVerified(true);
             chats.current.push(msg);
-            console.log({id:id,name:msg.username,text:msg.text,time:msg.time});
+            console.log({id:id,userName:msg.userName,text:msg.text,time:msg.time});
         });
+
+        return ()=> socket.off('message');
     });
 
     
@@ -47,7 +42,7 @@ export default function Index(){
             <Header setSidebar={setSidebar} sidebar={sidebar}/>
             <div className="flex bg-bgSecondary h-[86vh]">
                 <Participants sidebar={sidebar}/>
-                <Chats chats={chats} id={id} sendMessage={sendMessage} setMessage={setMessage} message={message}/>
+                <Chats socket={socket} chats={chats} id={id} setMessage={setMessage} message={message}/>
             </div>
             <Footer/>
         </>
