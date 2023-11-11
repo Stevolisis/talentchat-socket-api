@@ -19,7 +19,7 @@ io.on("connection",(socket)=>{
     socket.on('join-room',(args)=>{
         const user = userJoin(socket.id,args.name,args.room);
         socket.join(user.room);
-        socket.emit('message',formatMessage(botName,'Welcome to TalentChat'));
-        socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.userName} has joined the chat`));
+        socket.emit('message',formatMessage(socket.id,botName,'Welcome to TalentChat'));
+        socket.broadcast.to(user.room).emit('message', formatMessage(socket.id,botName, `${user.userName} has joined the chat`));
     });
 });

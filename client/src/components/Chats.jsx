@@ -1,6 +1,6 @@
 import { AiFillWechat } from 'react-icons/ai';
 
-export default function Chats({chatStatus}){
+export default function Chats({chats,id}){
 
     return(
         <>
@@ -11,13 +11,18 @@ export default function Chats({chatStatus}){
                 </div>
 
                 <div className="px-3 flex flex-col text-[9px] md:text-[11px] text-txtSecondary overflow-y-auto"> 
-                    <div className='flex justify-end'>
-                        <p className="p-1.5 md:p-2 w-fit text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3">Hi Whatsup?</p>
-                    </div>
-
-                    <div className='flex justify-start'>
-                    <p className="p-1.5 md:p-2 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3">Fine oo, how you dey?</p>
-                    </div>
+                    {
+                        chats.current.map((chat,i)=>{
+                            return chat.id !== id ?
+                                <div className='flex justify-end' key={i}>
+                                    <p className="p-1.5 md:p-2 w-fit text-sm text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.username}, {chat.time}</span><br/>{chat.text}</p>
+                                </div>
+                                :
+                                <div className='flex justify-start'>
+                                    <p className="p-1.5 md:p-2 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.username}, {chat.time}</span><br/>{chat.text}</p>
+                                </div>
+                        })
+                    }
 
                 </div>
 
