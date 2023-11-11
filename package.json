@@ -2,10 +2,10 @@
   "name": "videocall",
   "version": "1.0.0",
   "description": "A video Call WebApp",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "socket": "nodemon caller.js"
+    "socket": "nodemon app.js"
   },
   "author": "Steven Joseph",
   "license": "ISC",
