@@ -13,4 +13,7 @@ server.listen(80,()=>{console.log('Server running at PORT 80')})
 
 io.on("connection",(socket)=>{
     socket.emit("me",socket.id);
+    socket.on('join-room',(args)=>{
+        socket.join(socket.id)
+    })
 });
