@@ -1,6 +1,6 @@
-import { AiFillWechat, AiOutlineUser } from "react-icons/ai";
+import { AiFillWechat, AiOutlineBars, AiOutlineUser } from "react-icons/ai";
 
-export default function Header({setUsersStatus,usersStatus,setChatStatus,chatStatus}){
+export default function Header({setUsersStatus,usersStatus,setChatStatus,chatStatus,setSidebar,sidebar}){
 
     return(
         <>
@@ -10,6 +10,7 @@ export default function Header({setUsersStatus,usersStatus,setChatStatus,chatSta
                     <button className="font-[PoppinsMedium] mx-2 text-sm py-3 px-5 bg-bgSecondary rounded">Create Room</button>
                     <AiOutlineUser onClick={()=>setUsersStatus(!usersStatus)} className='text-[26px] mx-2 cursor-pointer block md:hidden'/>
                     <AiFillWechat onClick={()=>setChatStatus(!chatStatus)} className='text-[26px] mx-2 cursor-pointer block md:hidden'/>
+                    <AiOutlineBars onClick={()=>setSidebar(!sidebar)} className='text-[26px] mx-2 cursor-pointer block md:hidden'/>
                 </div>
             </header>
         </>

@@ -1,9 +1,9 @@
 
-export default function Participants({}){
+export default function Participants({sidebar}){
 
     return(
         <>
-            <nav className="w-[20vw] font-[PoppinsRegular] overflow-y-auto border-r border-bgTertiary">
+            <nav className={`min-[30vw] sm:min-w-[20vw] w-[30vw] sm:w-[20vw] ${sidebar ? '-ml-[0vw]' :'-ml-[30vw]'} font-[PoppinsRegular] overflow-y-auto border-r border-bgTertiary relative sm:block`}>
                 <div className="bg-brTertiary text-sm flex items-center justify-between py-2 px-5 text-txtPrimary">
                     <p className="text-[13px] md:text-sm">Chat Room</p> 
                     <p className="py-2 px-3 bg-brSecondary rounded-md text-xs">7</p>

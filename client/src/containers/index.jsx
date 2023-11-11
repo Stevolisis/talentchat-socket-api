@@ -11,7 +11,9 @@ let socket=io.connect(import.meta.env.VITE_SOCKET_HOST);
 export default function Index(){
     const [verified,setVerified] = useState(false);
     const [id, setId] = useState({});
+    const [sidebar, setSidebar] = useState(false);
     const chats = useRef([]);
+
     socket.on("connect", () => {
         console.log('ggg',socket.id);
         localStorage.setItem('token',socket.id);
@@ -27,16 +29,17 @@ export default function Index(){
             chats.current.push(msg);
             console.log({id:id,name:msg.username,text:msg.text,time:msg.time});
         });
+
     });
 
-
+console.log('gggggg',sidebar)
     
     return(
         <>
             {!verified && <JoinRoom setVerified={setVerified} socket={socket}/>}
-            <Header/>
+            <Header setSidebar={setSidebar} sidebar={sidebar}/>
             <div className="flex bg-bgSecondary h-[86vh]">
-                <Participants/>
+                <Participants sidebar={sidebar}/>
                 <Chats chats={chats} id={id}/>
             </div>
             <Footer/>

@@ -18,7 +18,7 @@ export default function Chats({chats,id}){
                                     <p className="p-1.5 md:p-2 w-fit text-sm text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.username}, {chat.time}</span><br/>{chat.text}</p>
                                 </div>
                                 :
-                                <div className='flex justify-start'>
+                                <div className='flex justify-start' key={i}>
                                     <p className="p-1.5 md:p-2 w-fit bg-bgTertiary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.username}, {chat.time}</span><br/>{chat.text}</p>
                                 </div>
                         })
