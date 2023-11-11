@@ -26,8 +26,8 @@ export default function Index(){
             setVerified(true);
             chats.current.push(msg);
             console.log({id:id,name:msg.username,text:msg.text,time:msg.time});
-        })
-    })
+        });
+    });
 
 
     

@@ -27,7 +27,9 @@ export default function Chats({chats,id}){
                 </div>
 
                 <div className="w-full text-txtSecondary text-center text-xs my-3 px-3">
-                    <input className="bg-brPrimary w-full py-2 px-3 outline-none border-none rounded-md text-bgTertiary" type='text' placeholder="Send a message"/>
+                    <form>
+                        <input className="bg-brPrimary w-full py-2 px-3 outline-none border-none rounded-md text-bgTertiary" type='text' placeholder="Send a message"/>
+                    </form>
                 </div>
             </nav>
         </>
