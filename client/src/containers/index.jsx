@@ -26,10 +26,9 @@ export default function Index(){
 
     useEffect(()=>{
         socket.on('message',(msg)=>{
-            console.log(msg)
             setVerified(true);
             chats.current.push(msg);
-            console.log({id:id,userName:msg.userName,text:msg.text,time:msg.time});
+            console.log({id:msg.id,userName:msg.userName,text:msg.text,time:msg.time});
         });
 
         return ()=> socket.off('message');
