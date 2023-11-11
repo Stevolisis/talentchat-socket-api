@@ -23,3 +23,8 @@ io.on("connection",(socket)=>{
         socket.broadcast.to(user.room).emit('message', formatMessage(socket.id,botName, `${user.userName} has joined the chat`));
     });
 });
+
+
+app.get('/', (req, res) => {
+    res.send('Hello, this is your Node.js app!');
+});
