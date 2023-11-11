@@ -14,6 +14,7 @@ export default function JoinRoom({setVerified,socket}){
                 <form onSubmit={(e)=>handleSubmit(e)} className="px-5 py-5 flex flex-col justify-center items-center bg-brSecondary w-[35vw] rounded-md">
                     <input value={userName} onChange={(e)=>setuserName(e.target.value)} name="user" type='text' className="mt-2 font-[PoppinsLight] text-xs bg-slate-200 w-full border-2 py-2 px-3 border-brTertiary outline-none rounded-md" required='required' placeholder="UserName"/>
                     <select value={room} onChange={(e)=>setRoom(e.target.value)} name="room" type='text' className="mt-2 font-[PoppinsLight] text-xs bg-slate-200 w-full border-2 py-2 px-3 border-brTertiary outline-none rounded-md" required='required' placeholder="Room">
+                        <option> </option>
                         <option>Javascript</option>
                         <option>PHP</option>
                         <option>Python</option>

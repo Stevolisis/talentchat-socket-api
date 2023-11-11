@@ -1,9 +1,9 @@
 const moment = require("moment/moment");
 
-const formatMessage = (id,username,text)=>{
+const formatMessage = (id,userName,text)=>{
     return {
         id,
-        username,
+        userName,
         text,
         time:moment().format('h:mm a')
     }

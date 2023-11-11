@@ -11,4 +11,8 @@ const getCurrentUser = (id)=>{
     return users.filter(user=>user.id === id)[0];
 }
 
-module.exports = { userJoin, getCurrentUser, };
+const getRoomUsers = (room)=>{
+    return users.filter(user=>user.room === room);
+}
+
+module.exports = { userJoin, getCurrentUser, getRoomUsers, };

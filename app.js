@@ -6,7 +6,7 @@ const app=express();
 const server=http.createServer(app);
 const io=require('socket.io')(server,{
     cors:{
-        origin:'https://talent-video-chat.vercel.app',
+        origin:'http://localhost:5173',
         method:['GET','POST']
     }
 });
@@ -21,10 +21,10 @@ io.on("connection",(socket)=>{
         socket.join(user.room);
         socket.emit('message',formatMessage(socket.id,botName,'Welcome to TalentChat'));
         socket.broadcast.to(user.room).emit('message', formatMessage(socket.id,botName, `${user.userName} has joined the chat`));
+        console.log('llllll')
+        socket.on('group-chat',(msg)=>{
+            console.log('msg',msg,formatMessage(user.id, user.userName, msg));
+            socket.broadcast.to(user.room).emit('message', formatMessage(socket.id, socket.userName, msg));
+        });
     });
-});
-
-
-app.get('/', (req, res) => {
-    res.send('Hello, this is your Node.js app!');
 });

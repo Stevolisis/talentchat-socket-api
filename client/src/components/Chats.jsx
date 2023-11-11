@@ -1,6 +1,6 @@
 import { AiFillWechat } from 'react-icons/ai';
 
-export default function Chats({chats,id}){
+export default function Chats({chats,id,sendMessage,message,setMessage}){
 
     return(
         <>
@@ -27,8 +27,8 @@ export default function Chats({chats,id}){
                 </div>
 
                 <div className="w-full text-txtSecondary text-center text-xs my-3 px-3">
-                    <form>
-                        <input className="bg-brPrimary w-full py-2 px-3 outline-none border-none rounded-md text-bgTertiary" type='text' placeholder="Send a message"/>
+                    <form onSubmit={(e)=>sendMessage(e)}>
+                        <input value={message} onChange={(e)=>setMessage(e.target.value)} className="bg-brPrimary w-full py-2 px-3 outline-none border-none rounded-md text-bgTertiary" type='text' placeholder="Send a message"/>
                     </form>
                 </div>
             </nav>
