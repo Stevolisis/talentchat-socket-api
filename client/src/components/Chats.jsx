@@ -11,7 +11,7 @@ export default function Chats({socket,chats,id,message,setMessage}){
     
     return(
         <>
-            <nav className={`duration-300 font-[PoppinsRegular] relative flex flex-1 flex-col justify-between border-l border-bgTertiary`}>
+            <nav className={`font-[PoppinsRegular] relative flex flex-1 flex-col justify-between border-l border-bgTertiary`}>
                 <div className="bg-brTertiary text-sm flex items-center justify-between py-3 px-5 text-txtPrimary">
                     <p className='text-[13px] md:text-sm'>Chat Room</p> 
                     <AiFillWechat className='text-[26px]'/>
@@ -20,7 +20,8 @@ export default function Chats({socket,chats,id,message,setMessage}){
                 <div className="px-3 flex flex-col text-[9px] md:text-[11px] text-txtSecondary overflow-y-auto"> 
                     {
                         chats.current.map((chat,i)=>{
-                            return chat.id !== id ?
+                            console.log('mmmmmmssssid',id !==chat.id)
+                            return chat.id === id ?
                                 <div className='flex justify-end' key={i}>
                                     <p className="p-1.5 md:p-2 w-fit text-sm text-right bg-brSecondary rounded-tr-md rounded-bl-md my-3"><span className='text-[10px] text-gray-500'>{chat.userName}, {chat.time}</span><br/>{chat.text}</p>
                                 </div>
