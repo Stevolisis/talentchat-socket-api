@@ -19,7 +19,7 @@ export default function Chats({socket,chats,id,message,setMessage}){
 
                 <div className="px-3 flex flex-col text-[9px] md:text-[11px] text-txtSecondary overflow-y-auto"> 
                     {
-                        chats.current.map((chat,i)=>{
+                        chats.map((chat,i)=>{
                             console.log('mmmmmmssssid',id !==chat.id)
                             return chat.id === id ?
                                 <div className='flex justify-end' key={i}>

@@ -33,7 +33,7 @@ io.on("connection",(socket)=>{
         io.to(data.to).emit('callAccepted'),data.signal}
     );
 
-})
+});
 
 
 

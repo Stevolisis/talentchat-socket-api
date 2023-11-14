@@ -13,8 +13,8 @@ export default function Index(){
     const [id, setId] = useState({});
     const [sidebar, setSidebar] = useState(false);
     const [message, setMessage] = useState('');
-    const chats = useRef([]);
-
+    const [chats, setChats] = useState([]);
+    
     socket.on("connect", () => {
         console.log('ggg',socket.id);
         localStorage.setItem('token',socket.id);
@@ -27,12 +27,13 @@ export default function Index(){
     useEffect(()=>{
         socket.on('message',(msg)=>{
             setVerified(true);
-            chats.current.push(msg);
+            setChats((prevChats) => [...prevChats, msg]);
             console.log({id:msg.id,userName:msg.userName,text:msg.text,time:msg.time});
         });
+        console.log('Listening to message emit')
 
         return ()=> socket.off('message');
-    });
+    },[socket]);
 
     
     return(
