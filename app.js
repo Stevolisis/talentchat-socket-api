@@ -24,7 +24,7 @@ io.on("connection",(socket)=>{
         console.log('llllll')
         socket.on('group-chat',(msg)=>{
             console.log('msg',msg,formatMessage(user.id, user.userName, msg));
-            io.emit('message', formatMessage(user.id, user.userName, msg));
+            socket.to(user.room).emit('message', formatMessage(user.id, user.userName, msg));
         });
     });
 });
