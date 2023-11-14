@@ -1,6 +1,13 @@
+import { useEffect, useRef } from 'react';
 import { AiFillWechat } from 'react-icons/ai';
 
 export default function Chats({socket,chats,id,message,setMessage}){
+    const chatContainerRef = useRef();
+
+    const scrollToBottom = () => {
+        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    };
+
     const sendMessage = (e)=>{
         e.preventDefault();
         console.log('message',message||'ppppp');
@@ -8,7 +15,11 @@ export default function Chats({socket,chats,id,message,setMessage}){
         setMessage('');
     }
 
-    
+    useEffect(() => {
+        scrollToBottom();
+    }, [chats]);
+
+
     return(
         <>
             <nav className={`font-[PoppinsRegular] relative flex flex-1 flex-col justify-between border-l border-bgTertiary`}>
@@ -17,7 +28,7 @@ export default function Chats({socket,chats,id,message,setMessage}){
                     <AiFillWechat className='text-[26px]'/>
                 </div>
 
-                <div className="px-3 flex flex-col text-[9px] md:text-[11px] text-txtSecondary overflow-y-auto"> 
+                <div ref={chatContainerRef} className="px-3 flex flex-col text-[9px] md:text-[11px] text-txtSecondary overflow-y-auto"> 
                     {
                         chats.map((chat,i)=>{
                             console.log('mmmmmmssssid',id !==chat.id)

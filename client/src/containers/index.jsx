@@ -33,7 +33,7 @@ export default function Index(){
         console.log('Listening to message emit')
 
         return ()=> socket.off('message');
-    },[socket]);
+    });
 
     
     return(
