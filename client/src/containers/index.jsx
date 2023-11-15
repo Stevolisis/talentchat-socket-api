@@ -14,6 +14,7 @@ export default function Index(){
     const [sidebar, setSidebar] = useState(false);
     const [message, setMessage] = useState('');
     const [chats, setChats] = useState([]);
+    const [users, setUsers] = useState([]);
     
     socket.on("connect", () => {
         console.log('ggg',socket.id);
@@ -31,6 +32,10 @@ export default function Index(){
             console.log({id:msg.id,userName:msg.userName,text:msg.text,time:msg.time});
         });
         console.log('Listening to message emit')
+        socket.on('room-users',(users)=>{
+            setUsers(users);
+            console.log('Room Users',users);
+        })
 
         return ()=> socket.off('message');
     });
@@ -41,7 +46,7 @@ export default function Index(){
             {!verified && <JoinRoom setVerified={setVerified} socket={socket}/>}
             <Header setSidebar={setSidebar} sidebar={sidebar}/>
             <div className="flex bg-bgSecondary h-[86vh]">
-                <Participants sidebar={sidebar}/>
+                <Participants sidebar={sidebar} users={users}/>
                 <Chats socket={socket} chats={chats} id={id} setMessage={setMessage} message={message}/>
             </div>
             <Footer/>

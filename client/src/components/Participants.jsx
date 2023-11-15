@@ -1,5 +1,6 @@
 
-export default function Participants({sidebar}){
+export default function Participants({sidebar,users}){
+    console.log(users);
 
     return(
         <>
@@ -21,9 +22,11 @@ export default function Participants({sidebar}){
                 </div>
 
                 <div className="text-[11px] text-[PoppinsLight] text-txtTertiary">
-                    <div className="px-5 py-2 cursor-pointer hover:bg-brSecondary duration-300">Daniel Rashda</div>
-                    <div className="px-5 py-2 cursor-pointer hover:bg-brSecondary duration-300">Gadosh Lintel</div>
-                    <div className="px-5 py-2 cursor-pointer hover:bg-brSecondary duration-300">Tasha Bush</div>
+                    {
+                        users.map((user,i)=>{
+                            return <div key={i} className="px-5 py-2 cursor-pointer hover:bg-brSecondary duration-300">{user.userName}</div>
+                        })
+                    }
                 </div>
 
             </nav>

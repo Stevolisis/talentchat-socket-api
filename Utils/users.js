@@ -12,6 +12,7 @@ const getCurrentUser = (id)=>{
 }
 
 const getRoomUsers = (room)=>{
+    console.log(users,room);
     return users.filter(user=>user.room === room);
 }
 
