@@ -15,6 +15,7 @@ export default function Index(){
     const [message, setMessage] = useState('');
     const [chats, setChats] = useState([]);
     const [users, setUsers] = useState([]);
+    const [room, setRoom] = useState('');
     
     socket.on("connect", () => {
         console.log('ggg',socket.id);
@@ -23,6 +24,10 @@ export default function Index(){
     socket.on('me',(arg)=>{
         console.log(arg);
         setId(arg);
+    });
+
+    socket.on('getRoom',(room)=>{
+        setRoom(room);
     });
 
     useEffect(()=>{
@@ -35,7 +40,7 @@ export default function Index(){
         socket.on('room-users',(users)=>{
             setUsers(users);
             console.log('Room Users',users);
-        })
+        });
 
         return ()=> socket.off('message');
     });
@@ -46,7 +51,7 @@ export default function Index(){
             {!verified && <JoinRoom setVerified={setVerified} socket={socket}/>}
             <Header setSidebar={setSidebar} sidebar={sidebar}/>
             <div className="flex bg-bgSecondary h-[86vh]">
-                <Participants sidebar={sidebar} users={users}/>
+                <Participants sidebar={sidebar} users={users} room={room}/>
                 <Chats socket={socket} chats={chats} id={id} setMessage={setMessage} message={message}/>
             </div>
             <Footer/>
