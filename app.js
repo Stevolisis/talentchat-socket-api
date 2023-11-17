@@ -8,8 +8,7 @@ const server=http.createServer(app);
 // console.log('opop',process.env.CORS_ALLOW)
 const io=require('socket.io')(server,{
     cors:{
-        origin:'http://localhost:5173',
-        // origin:process.env.CORS_ALLOW,
+        origin:process.env.CORS_ALLOW,
         method:['GET','POST']
     }
 });
