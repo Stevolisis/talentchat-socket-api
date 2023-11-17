@@ -16,6 +16,7 @@ export default function Index(){
     const [chats, setChats] = useState([]);
     const [users, setUsers] = useState([]);
     const [room, setRoom] = useState('');
+    console.log('loogs',import.meta.env.VITE_SOCKET_HOST||"Hi whats wrong");
     
     socket.on("connect", () => {
         console.log('ggg',socket.id);
