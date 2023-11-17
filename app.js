@@ -5,7 +5,7 @@ const { userJoin, getRoomUsers } = require('./Utils/users');
 require('dotenv').config();
 const app=express();
 const server=http.createServer(app);
-console.log('opop',process.env.CORS_ALLOW)
+// console.log('opop',process.env.CORS_ALLOW)
 const io=require('socket.io')(server,{
     cors:{
         // origin:'http://localhost:5173',
