@@ -35,5 +35,5 @@ io.on("connection",(socket)=>{
 
 
 app.get('/',(req,res)=>{
-    res.send('Socket backendedede');
+    res.send(`Socket backendedede ${process.env.CORS_ALLOW}`);
 })
