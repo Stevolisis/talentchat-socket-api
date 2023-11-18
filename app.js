@@ -13,6 +13,14 @@ const io=require('socket.io')(server,{
     }
 });
 
+// The cors configuration in Socket.IO mainly affects HTTP requests, not WebSocket connections.
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    // Add other CORS headers if needed
+    next();
+});
+
 server.listen(80,()=>{console.log('Server running at PORT 5173')});
 
 const botName = 'TalentChat Bot';
