@@ -8,14 +8,14 @@ const server=http.createServer(app);
 // console.log('opop',process.env.CORS_ALLOW)
 const io=require('socket.io')(server,{
     cors:{
-        origin:'*',
+        origin:'https://talentchat.vercel.app',
         method:['GET','POST']
     }
 });
 
 // The cors configuration in Socket.IO mainly affects HTTP requests, not WebSocket connections.
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'https://talentchat.vercel.app');
     res.header('Access-Control-Allow-Methods', 'GET, POST');
     // Add other CORS headers if needed
     next();
